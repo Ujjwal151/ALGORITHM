@@ -6,6 +6,18 @@ const int N = 500;
 const int INF = 1e9+10;
 int dis[N][N];
 
+void print(int n)
+{
+	for(int i = 1; i<=n; i++){
+		for(int j= 1; j<=n; j++){
+			if(dis[i][j] == INF)
+				cout<<"X ";
+			else cout<< dis[i][j]<<" ";
+		}
+		cout<<"\n";
+	}
+}
+
 int main(){
 	for(int i = 0; i<N; i++)
 		for(int j= 0; j<N; j++){
@@ -21,21 +33,14 @@ int main(){
 		dis[x][y] = wt;
 	}
 
-	for(int k = 1; k<=n; ++k)
-		for(int i = 1; i<=n; i++)
-			for(int j = 1; j<=n; j++)
+	for(int k = 1; k<=n; ++k){
+		for(int i = 1; i<=n; i++){
+			for(int j = 1; j<=n; j++){
 				if(dis[i][k] != INF && dis[k][j] != INF)
 					dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j]);
-	
-
-
-	for(int i = 1; i<=n; i++){
-		for(int j= 1; j<=n; j++){
-			if(dis[i][j] == INF)
-				cout<<"I ";
-			else cout<< dis[i][j]<<" ";
+			}
 		}
-		cout<<"\n";
+		cout<<"\nFOR K = "<<k<<" : \n";
+		print(n);
 	}
-
 }
